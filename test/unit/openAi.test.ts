@@ -20,7 +20,7 @@ describe('OpenAiEngine', () => {
   it('uses max_completion_tokens for reasoning models', async () => {
     const engine = new OpenAiEngine({
       ...baseConfig,
-      model: 'o3-mini'
+      model: 'gpt-5.6-sol'
     });
 
     const create = jest
@@ -33,7 +33,7 @@ describe('OpenAiEngine', () => {
 
     expect(create).toHaveBeenCalledWith(
       expect.objectContaining({
-        model: 'o3-mini',
+        model: 'gpt-5.6-sol',
         max_completion_tokens: 1024
       })
     );
@@ -76,7 +76,7 @@ describe('OpenAiEngine', () => {
   it('forces standard params when isReasoning is explicitly false', async () => {
     const engine = new OpenAiEngine({
       ...baseConfig,
-      model: 'o3-mini',
+      model: 'gpt-5.6-sol',
       isReasoning: false
     });
 
@@ -90,7 +90,7 @@ describe('OpenAiEngine', () => {
 
     expect(create).toHaveBeenCalledWith(
       expect.objectContaining({
-        model: 'o3-mini',
+        model: 'gpt-5.6-sol',
         max_tokens: 256,
         temperature: 0,
         top_p: 0.1
@@ -101,7 +101,7 @@ describe('OpenAiEngine', () => {
   it('throws TOO_MUCH_TOKENS error when input exceeds token limit boundary', async () => {
     const engine = new OpenAiEngine({
       ...baseConfig,
-      model: 'o3-mini',
+      model: 'gpt-5.6-sol',
       maxTokensInput: 1024,
       tokensMaxReasoning: 1024
       // 1024 (input) - 1024 (reasoning limit) leaves 0 tokens for the prompt.
@@ -116,7 +116,7 @@ describe('OpenAiEngine', () => {
   it('forces reasoning params when isReasoning is explicitly true', async () => {
     const engine = new OpenAiEngine({
       ...baseConfig,
-      model: 'gpt-4',
+      model: 'gpt-5.6-sol',
       isReasoning: true
     });
 
@@ -130,7 +130,7 @@ describe('OpenAiEngine', () => {
 
     expect(create).toHaveBeenCalledWith(
       expect.objectContaining({
-        model: 'gpt-4',
+        model: 'gpt-5.6-sol',
         max_completion_tokens: 1024
       })
     );
@@ -144,7 +144,7 @@ describe('OpenAiEngine', () => {
         envPath: envFile.filePath,
         globalPath: `${envFile.filePath}.missing`
       });
-      config.OCO_MODEL = 'o3-mini';
+      config.OCO_MODEL = 'gpt-5.6-sol';
       config.OCO_API_KEY = 'test-key';
 
       expect(config.OCO_REASONING).toBeUndefined();
@@ -162,7 +162,7 @@ describe('OpenAiEngine', () => {
       expect(result).toBe('feat(default): success');
       expect(create).toHaveBeenCalledWith(
         expect.objectContaining({
-          model: 'o3-mini',
+          model: 'gpt-5.6-sol',
           max_completion_tokens: 1000
         })
       );
