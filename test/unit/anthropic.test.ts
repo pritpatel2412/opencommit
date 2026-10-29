@@ -32,7 +32,7 @@ describe('AnthropicEngine', () => {
     ['claude-sonnet-4-20250514', 0.1],
     ['claude-haiku-4-5', undefined],
     ['claude-haiku-4-5-20251001', undefined],
-    ['claude-sonnet-4-5-20250929', undefined],
+    ['claude-sonnet-5-5', undefined],
     ['claude-sonnet-4-6', undefined],
     ['claude-opus-4-8', undefined],
     ['custom-proxy-model', 0.1]
